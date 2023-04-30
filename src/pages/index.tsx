@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google';
-
+import axios from 'axios';
+import { useRef } from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 // components
@@ -7,6 +8,19 @@ import { PromptInput } from '../components/promptInput';
 import { TextArea } from '../components/textArea';
 
 export default function Home() {
+  const prompt = useRef("");
+
+  const sendPrompt = async () => {
+    try {
+      const res = await axios.post("/api/upload", {
+        prompt: prompt?.current,
+      });
+      console.log(res.data); // do something with response data
+    } catch (error) {
+      console.error(error); // handle error
+    }
+  }
+
   return (
     <div className="h-screen flex flex-col justify-center items-center">
       <div className='w-1/2'>
