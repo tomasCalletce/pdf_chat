@@ -6,7 +6,7 @@ export const PromptInput = () => {
           <input
             type="text"
             placeholder="Search…"
-            className="input input-bordered"
+            className="input input-bordered w-full"
           />
           <button className="btn btn-square">
             <svg
